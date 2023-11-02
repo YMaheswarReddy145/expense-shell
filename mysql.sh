@@ -1,4 +1,4 @@
-log_file="/temp/expense.log"
+log_file="/tmp/expense.log"
 color="\e[33m"
 
 echo -e "${color} Disable MYSQL default Version \e[0m"
