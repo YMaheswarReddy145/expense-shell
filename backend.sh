@@ -33,7 +33,7 @@ else
   echo -e "\e[31m FAILURE \e[0m"
 fi 
 
-id expene &>>$log_file
+id expense &>>$log_file
 if [ $? -ne 0 ]; then   # we are adding this to evaluate if the user expense  is present or not.
   echo -e "${color} Add Application User \e[0m"
   useradd expense &>>$log_file
