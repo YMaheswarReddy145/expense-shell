@@ -44,13 +44,15 @@ if [ $? -ne 0 ]; then   # we are adding this to evaluate if the user expense  is
   fi
 fi
 
-echo -e "${color} Create Application directory \e[0m"
-mkdir /app &>>$log_file
-if [ $? -eq 0 ]; then
-  echo -e "\e[32m SUCCESS \e[0m"
-else
-  echo -e "\e[31m FAILURE \e[0m"
-fi 
+if [ ! -d /app ]; then  # here -d represent that the directory /app is exist
+  echo -e "${color} Create Application directory \e[0m"
+  mkdir /app &>>$log_file
+  if [ $? -eq 0 ]; then
+    echo -e "\e[32m SUCCESS \e[0m"
+  else
+    echo -e "\e[31m FAILURE \e[0m"
+  fi
+fi
 
 echo -e "${color} Delete old  Application Content \e[0m"
 rm -rf /app/* &>>$log_file
