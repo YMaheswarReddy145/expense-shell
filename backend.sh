@@ -44,6 +44,9 @@ if [ $? -ne 0 ]; then   # we are adding this to evaluate if the user expense  is
   fi
 fi
 
+# sudo mkdir -p /app to avoid the problem in the first place here -p is an option its ignore if there is an directory
+   # if there are no directory it will give 0  by giving echo $? after the above command.
+
 if [ ! -d /app ]; then  # here -d represent that the directory /app is exist
   echo -e "${color} Create Application directory \e[0m"
   mkdir /app &>>$log_file
