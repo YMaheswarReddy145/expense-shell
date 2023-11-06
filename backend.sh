@@ -1,6 +1,15 @@
 log_file="/tmp/expense.log"
 color="\e[33m"
 
+if [ -z "$1" ];then                # here we are validating either input password is empty or not by -z(it means empty)
+   echo Password input is missing   # if its empty then it print message we have provided and exit the process.
+   exit
+fi
+
+MYSQL_ROOT_PASSWORD=$1  # with the help of this now we don't need to hard code the password in the file now we can
+                        # directly provide the password in the script after the file name.
+                           # sudo bash backend.sh Expenasepp@1
+
 echo -e "${color} Disable NodeJS default Version \e[0m"
 dnf module disable nodejs -y &>>$log_file
 if [ $? -eq 0 ]; then
@@ -99,7 +108,7 @@ else
 fi 
 
 echo -e "${color} Load Schema \e[0m"
-mysql -h mysql-dev.maheswary.online -uroot -pExpenseApp@1 < /app/schema/backend.sql &>>$log_file
+mysql -h mysql-dev.maheswary.online -uroot -p${MYSQL_ROOT_PASSWORD} < /app/schema/backend.sql &>>$log_file
 if [ $? -eq 0 ]; then
   echo -e "\e[32m SUCCESS \e[0m"
 else
