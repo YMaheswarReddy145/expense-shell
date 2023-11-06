@@ -12,5 +12,6 @@ status_check()
     echo -e "\e[32m SUCCESS \e[0m"
   else
     echo -e "\e[31m FAILURE \e[0m"
-  fi
+    exit 1  # we are asking to provide the status as 1 if there is any FAILURE, it 's up to us to set the return codes
+  fi         # from 0-255
 }
