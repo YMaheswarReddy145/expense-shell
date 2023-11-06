@@ -1,17 +1,6 @@
-log_file="/tmp/expense.log"
-color="\e[33m"
-
-# previously at each step we are providing the below condition to check the status but now with the help of functions
-# we can declare the condition in the functions and we can call the function directly where ever we want to check the status.
-status_check()
-{
-  if [ $? -eq 0 ]; then
-    echo -e "\e[32m SUCCESS \e[0m"
-  else
-    echo -e "\e[31m FAILURE \e[0m"
-  fi
-}
-
+source common.sh  #this common.sh file contain the common commands that are using in frontend,backend, mysql
+                  # so now we can directly import or source these commands using the file name directly without declaring
+                  # the common command multiple times
 
 echo -e "${color} Installing nginx \e[0m"
 dnf install nginx -y &>>$log_file
